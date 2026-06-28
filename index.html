@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Did the Mariners Win?</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+        p {
+            font-size:50px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <p id="text" ></p>
+    <p id="record"></p>
+    <script>
+        
+        async function DidTheMarinersWin() {
+            const marinersId = 136;
+            const paragraph = document.getElementById("text");
+            const recordPara = document.getElementById("record");
+             const firstEndPoint =  await fetch("https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136");
+               const data = await firstEndPoint.json();
+            if (!data.dates || data.dates.length === 0) {
+                paragraph.textContent = "They Did Not Play Today";
+                return;
+            }
+            const game = data.dates[0].games.filter(game => game.status.abstractGameState == "Final");
+
+            if (game.length == 0) {
+                paragraph.textContent = "Game Is Not Final";
+                return;
+            }
+
+
+            const mostRecentGame = game[game.length - 1];
+
+          
+                const awayTeamId = mostRecentGame.teams.away.team.id;
+                const homeTeamId = mostRecentGame.teams.home.team.id;
+
+
+
+                const areMarinersHomeTeam = homeTeamId == marinersId ? true : false;
+
+
+
+                const isAwayTeamWinner = mostRecentGame.teams.away.isWinner;
+
+            const isHomeTeamWinner = mostRecentGame.teams.home.isWinner;
+            const marinersWins = areMarinersHomeTeam ? mostRecentGame.teams.home.leagueRecord.wins : mostRecentGame.teams.away.leagueRecord.wins;
+            const marinersLosses = areMarinersHomeTeam ? mostRecentGame.teams.home.leagueRecord.losses : mostRecentGame.teams.away.leagueRecord.losses;
+            
+                recordPara.textContent = "Their record is " + marinersWins + "-" + marinersLosses;
+         
+                
+            
+
+                if (areMarinersHomeTeam && isHomeTeamWinner || !areMarinersHomeTeam && isAwayTeamWinner) {
+                    paragraph.textContent = "No";
+                    return;
+                } else {
+                    paragraph.textContent = "Yes";
+                    return;
+                }
+
+            
+
+          
+
+        }
+
+        DidTheMarinersWin();
+
+        
+    </script>
+</body>
+</html>
