@@ -17,12 +17,12 @@
     <p id="record"></p>
     <input type="date" id = "dateInput">
     <script>
-        
+        const dateInput = document.getElementById("dateInput");
         async function DidTheMarinersWin(date) {
             const marinersId = 136;
             const paragraph = document.getElementById("text");
             const recordPara = document.getElementById("record");
-            const dateInput = document.getElementById("dateInput");
+            
             let dateString;
             if(date === null) {
                 const currentDate = new Date().toISOString().split("T")[0];
@@ -84,7 +84,15 @@
         }
 
         DidTheMarinersWin(null);
+      async function ScanForInputs() {
+          if(dateInput.value !== null) {
+              const date = dateInput.value;
+              DidTheMarinersWin(date);
+          }
+      }
 
+    setInterval(ScanForInputs, 100);
+        
         
     </script>
 </body>
