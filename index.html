@@ -30,7 +30,7 @@
             } else {
                 dateString = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+date;
             }
-            console.log(dateString);
+            
             
              const firstEndPoint =  await fetch(dateString);
                const data = await firstEndPoint.json();
@@ -85,10 +85,13 @@
 
         DidTheMarinersWin(null);
       async function ScanForInputs() {
-          if(dateInput.value !== null) {
+          /*
+          if(dateInput.value !==) {
               const date = dateInput.value;
               DidTheMarinersWin(date);
           }
+          */
+          console.log(valueof(dateInput.value));
       }
 
     setInterval(ScanForInputs, 100);
