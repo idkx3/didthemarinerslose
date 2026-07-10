@@ -15,12 +15,15 @@
 <body>
     <p id="text" ></p>
     <p id="record"></p>
+    <input type="date" id = "dateInput"></input>
     <script>
         
         async function DidTheMarinersWin() {
             const marinersId = 136;
             const paragraph = document.getElementById("text");
             const recordPara = document.getElementById("record");
+            const dateInput = document.getElementById("dateInput");
+            console.log(dateInput.value);
              const firstEndPoint =  await fetch("https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136");
                const data = await firstEndPoint.json();
             if (!data.dates || data.dates.length === 0) {
