@@ -18,13 +18,20 @@
     <input type="date" id = "dateInput">
     <script>
         
-        async function DidTheMarinersWin() {
+        async function DidTheMarinersWin(date) {
             const marinersId = 136;
             const paragraph = document.getElementById("text");
             const recordPara = document.getElementById("record");
             const dateInput = document.getElementById("dateInput");
-            console.log(dateInput.value);
-             const firstEndPoint =  await fetch("https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136");
+            let dateString;
+            if(date === null) {
+                const currentDate = new Date().toISOString().split("T")[0];
+                dateString = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+currentDate;
+            } else {
+                dateString = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+date;
+            }
+            
+             const firstEndPoint =  await fetch("https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+");
                const data = await firstEndPoint.json();
             if (!data.dates || data.dates.length === 0) {
                 paragraph.textContent = "They Did Not Play Today";
@@ -75,7 +82,7 @@
 
         }
 
-        DidTheMarinersWin();
+        DidTheMarinersWin(null);
 
         
     </script>
