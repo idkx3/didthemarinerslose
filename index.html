@@ -10,6 +10,12 @@
             font-size:50px;
             text-align:center;
         }
+        #dateInput {
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  height: 100vh;           
+}
     </style>
 </head>
 <body>
@@ -31,7 +37,7 @@
                 dateString = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+date;
             }
             
-            console.log(dateString);
+           
              const firstEndPoint =  await fetch(dateString);
                const data = await firstEndPoint.json();
             if (!data.dates || data.dates.length === 0) {
