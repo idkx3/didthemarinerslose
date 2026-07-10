@@ -32,7 +32,7 @@
             }
             console.log(dateString);
             
-             const firstEndPoint =  await fetch("https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+dateString);
+             const firstEndPoint =  await fetch(dateString);
                const data = await firstEndPoint.json();
             if (!data.dates || data.dates.length === 0) {
                 paragraph.textContent = "They Did Not Play Today";
