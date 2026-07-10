@@ -31,7 +31,7 @@
                 dateString = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+date;
             }
             
-            
+            console.log(dateString);
              const firstEndPoint =  await fetch(dateString);
                const data = await firstEndPoint.json();
             if (!data.dates || data.dates.length === 0) {
@@ -85,13 +85,13 @@
 
         DidTheMarinersWin(null);
       async function ScanForInputs() {
-          /*
-          if(dateInput.value !==) {
+          
+          if(dateInput.value !== "") {
               const date = dateInput.value;
               DidTheMarinersWin(date);
           }
-          */
-          console.log(typeof(dateInput.value));
+          
+         
       }
 
     setInterval(ScanForInputs, 100);
