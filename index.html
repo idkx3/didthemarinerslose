@@ -30,7 +30,7 @@
             const game = data.dates[0].games.filter(game => game.status.abstractGameState == "Final");
 
             if (game.length == 0) {
-                paragraph.textContent = "Game Is Not Final";
+                paragraph.textContent = "Today's game is not final";
                 return;
             }
 
