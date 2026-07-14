@@ -25,11 +25,13 @@
             const recordPara = document.getElementById("record");
             
             let dateString;
+            let currentDate;
             if(date === null) {
-                const currentDate = new Date().toISOString().split("T")[0];
+                 currentDate = new Date().toISOString().split("T")[0];
                 dateString = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+currentDate;
             } else {
-                dateString = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+date;
+                currentDate = date;
+                dateString = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+currentDate;
             }
             
            
@@ -71,10 +73,10 @@
             
 
                 if (areMarinersHomeTeam && isHomeTeamWinner || !areMarinersHomeTeam && isAwayTeamWinner) {
-                    paragraph.textContent = "No, on " + dateString + " they won";
+                    paragraph.textContent = "No, on " + currentDate + " they won";
                     return;
                 } else {
-                    paragraph.textContent = "Yes, on " + dateString + " they lost :(";
+                    paragraph.textContent = "Yes, on " + currentDate + " they lost :(";
                     return;
                 }
 
