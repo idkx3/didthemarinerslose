@@ -71,10 +71,10 @@
             
 
                 if (areMarinersHomeTeam && isHomeTeamWinner || !areMarinersHomeTeam && isAwayTeamWinner) {
-                    paragraph.textContent = "No";
+                    paragraph.textContent = "No, on " + dateString + " they won";
                     return;
                 } else {
-                    paragraph.textContent = "Yes";
+                    paragraph.textContent = "Yes, on " + dateString + " they lost :(";
                     return;
                 }
 
