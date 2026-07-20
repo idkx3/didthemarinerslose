@@ -33,7 +33,7 @@
                 currentDate = date;
                 dateString = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+currentDate;
             }
-            
+            console.log(currentDate);
            
              const firstEndPoint =  await fetch(dateString);
                const data = await firstEndPoint.json();
