@@ -27,7 +27,7 @@
             let dateString;
             let currentDate;
             if(date === null) {
-                 currentDate = new Date().toISOString().split("T")[0];
+                 currentDate = new Date().toLocaleDateString("en-CA");
                 dateString = "https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136"+"&date="+currentDate;
             } else {
                 currentDate = date;
