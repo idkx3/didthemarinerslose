@@ -1,4 +1,4 @@
-export async function PopulateList(gameP) {
+export async function PopulateList(thingDiv) {
           let today = new Date();
 	  const thingDiv = document.getElementById("thing");
 	  let tenDaysAgo = new Date();
