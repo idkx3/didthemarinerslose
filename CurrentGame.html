@@ -28,8 +28,12 @@
 	  gameData = await gameData.json();
 	  for(let i = 0; i<gameData.highlights.highlights.items.length; i++) {
 		  const currentHighlight = gameData.highlights.highlights.items[i];
-		  let p = document.createElement("p");
-		  p.textContent = currentHighlight.blurb;
+		  let p = document.createElement();
+		  const playbacklink = currentHighlight.playbacks[0].url;
+		  
+		  p.innerHTML = '<a href = ' + playbacklink + '>' + currentHighlight.blurb + '</a>';
+		  
+		 
 		  div.appendChild(p);
 	  }
 	  console.log(gameData);
