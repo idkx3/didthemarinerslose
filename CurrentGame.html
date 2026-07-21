@@ -17,7 +17,7 @@
 <div id = "thing"></div>
 	
     <script type = "module">
-    async function UpdateGame() {
+    async function UpdateGame(div) {
       let data = await fetch("https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136");
       data = await data.json();
 	  const gamesLen = data.dates[0].games.length;
@@ -26,11 +26,16 @@
 	
 	 
 	  gameData = await gameData.json();
-	  
+	  for(let i = 0; i<gameData.highlights.highlights.items.length; i++) {
+		  const currentHighlight = gameData.highlights.highlights.items[i];
+		  let p = document.createElement("p");
+		  p.textContent = currentHighlight.blurb;
+		  div.appendChild(p);
+	  }
 	  console.log(gameData);
     }
 
-	UpdateGame();
+	UpdateGame(document.getElementById("thing"));
 
  
         
