@@ -20,7 +20,7 @@
     async function UpdateGame() {
       let data = await fetch("https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136");
       data = await data.json();
-      console.log(date);
+      console.log(data);
     }
 
 	UpdateGame();
