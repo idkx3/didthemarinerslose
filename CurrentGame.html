@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last 10 days</title>
+    
+    <style>
+        p {
+            font-size:15px;
+            text-align:center;
+        }
+      
+    </style>
+</head>
+<body>
+<div id = "thing"></div>
+	
+    <script type = "module">
+    async function UpdateGame() {
+      let data = await fetch("https://statsapi.mlb.com/api/v1/schedule?sportId=1&teamId=136");
+      data = await data.json();
+      console.log(date);
+    }
+
+
+
+ 
+        
+    </script>
+</body>
+</html>
