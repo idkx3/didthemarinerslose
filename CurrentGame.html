@@ -23,7 +23,10 @@
 	  const gamesLen = data.dates[0].games.length;
       const gamePk = data.dates[0].games[gamesLen-1].gamePk;
 	  let gameData = await fetch("https://statsapi.mlb.com/api/v1/game/"+gamePk+"/content");
+	
+	 
 	  gameData = await gameData.json();
+	  
 	  console.log(gameData);
     }
 
