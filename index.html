@@ -37,11 +37,12 @@
            
              const firstEndPoint =  await fetch(dateString);
                const data = await firstEndPoint.json();
+            console.log(data);
             if (!data.dates || data.dates.length === 0) {
                 paragraph.textContent = "They Did Not Play Today";
                 return;
             }
-            console.log(data);
+            
             const game = data.dates[0].games.filter(game => game.status.abstractGameState == "Final");
 
             if (game.length == 0) {
